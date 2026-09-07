@@ -7,29 +7,28 @@ window.geometry("600x400")
 name_var=tk.StringVar()
 passw_var=tk.StringVar()
 
-def submit():
-
-    name=name_var.get()
-    password=passw_var.get()
+def convert():
+    pounds = float(txt_pounds.get())
+    euros = pounds * 1.17
     
-    print("The name is: " + name)
-    print("The password is: " + password)
+    txt_euros.delete(0, tk.END)
+    txt_euros.insert(0, euros)
     
-    name_var.set("")
-    passw_var.set("")
-    
-name_label = tk.Label(window, text = 'Username', font=('calibre',10, 'bold'))
-name_entry = tk.Entry(window,textvariable = name_var, font=('calibre',10,'normal'))
 
-passw_label = tk.Label(window, text = 'Password', font = ('calibre',10,'bold'))
-passw_entry = tk.Entry(window, textvariable = passw_var, font=('calibre',10,'normal'))
+LBL_pounds = tk.Label(window, text="Pounds")
+LBL_pounds.pack()
 
-sub_btn=tk.Button(window,text = 'Submit', command = submit)
+txt_pounds = tk.Entry(window, width = 15)
+txt_pounds.pack()
 
-name_label.grid(row=0,column=0)
-name_entry.grid(row=0,column=1)
-passw_label.grid(row=1,column=0)
-passw_entry.grid(row=1,column=1)
-sub_btn.grid(row=2,column=1)
+btn_convert = Button(window, text="Convert", command=convert)
+btn_convert.pack(pady = 10)
+
+LBL_euros = Label(window, text="Euros")
+LBL_euros.pack()
+
+txt_euros = Entry(window, width = 15)
+txt_euros.pack()
+
 window.mainloop()
 
